@@ -8,10 +8,12 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
 const routes: Routes = [
   { path: '', component: ProductsComponent,
    children:[
+  {path:'',component: ListProductComponent},
   {path:'list',component: ListProductComponent},
   {path: 'new', component: FormProductComponent},
   {path: 'category/:category', component: ListProductComponent},
   {path: 'outofstock', component: AdminProductComponent},
+  {path:'update/:id', component: FormProductComponent}
     ]
   },
 ];

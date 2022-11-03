@@ -1,28 +1,62 @@
 <h1>Add new product</h1>
-<form>
-    <div class="form-group col-md-6">
-        <label>Title</label>
-        <input type="text" [(ngModel)]="product.title" name="title" class="form-control">
+<form #f="ngForm">
+ <div class="form-group col-md-6">
+    <label>Title</label>
+    <input type="text" name="name" [(ngModel)]="product.title" class="form-control" required minlength="3" pattern="[A-Z a-z]{3,15}$" #t="ngModel">
+    <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+        <div *ngIf="t.hasError('required')">
+           this field is required
+          </div>
+        <div *ngIf="t.hasError('minlength')">
+           minlength = 3 !
+        </div>
+        <div *ngIf="t.hasError('pattern')">
+          error pattern
+       </div>
     </div>
-    <div class="form-group col-md-6">
-        <label>Price</label>
-        <input type="number" [(ngModel)]="product.price" name="price" class="form-control">
+ </div>
+ <div class="form-group col-md-6">
+    <label>price</label>
+    <input type="number" name="price"
+    [(ngModel)]="product.price"class="form-control"
+    required #p="ngModel">
+    <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+      this field is required
     </div>
-    <div class="form-group col-md-6">
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="product.quantity" name="quantity" class="form-control">
+  </div>
+  <div class="form-group col-md-6">
+    <label>quantity</label>
+    <input type="number" name="quantity"
+    [(ngModel)]="product.quantity"
+    class="form-control" required #q="ngModel">
+    <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+      this field is required
     </div>
-    <div class="form-group col-md-6">
-        <label>nbrLike</label>
-        <input type="number" [(ngModel)]="product.nbrLike" name="nbrLike" class="form-control">
+  </div>
+  <div class="form-group col-md-6">
+    <label>category</label>
+    <select [(ngModel)]="product.category" name="category" class="form-control" required>
+      <option value="men">men</option>
+      <option value="women">women</option>
+      <option value="kids">kids</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label>description</label>
+    <input [(ngModel)]="product.description"
+    type="text" name="description"
+    class="form-control" required #d="ngModel">
+    <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+      this field is required
     </div>
-    <div class="form-group col-md-6">
-        <label>Picture</label>
-        <input type="text" [(ngModel)]="product.picture" name="nbrLike" class="form-control">
-    </div>
-    <br>
-    <div class="form-group col-md-6">
-        <button class="btn btn-success" (click)="saveProduct()">save</button>
-    </div>
-  
+  </div>
+  <div class="form-group col-md-6">
+    <label>picture</label>
+    <input type="text" [(ngModel)]="product.picture"name="picture" class="form-control"required #pic="ngModel">
+    <div class="alert alert-danger" *ngIf="pic.invalid && pic.touched">
+      this field is required
+  </div>
+  </div>
+  <button (click)="saveProduct()" class="btn btn-sm btn-success"[disabled]="f.invalid" >Save</button>
+
 </form>

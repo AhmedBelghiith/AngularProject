@@ -44,4 +44,19 @@ export class ProduitService {
     if (i != -1){this.listProduct.splice(i,1);
     }
   }
+
+  getProduit(id:number): any{
+    for(let i in this.listProduct){
+      if(this.listProduct[i]['id']==id){
+        return this.listProduct[i]
+      }
+    }
+}
+updateProduit(product: Product){
+  for(let prod of this.listProduct){
+    if(prod.id===product.id){
+      prod=product
+    }
+}
+}
 }

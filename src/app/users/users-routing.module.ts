@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormUserComponent } from './form-user/form-user.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'list/profile/:id', component: ProfileComponent}
     ]
   },
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
